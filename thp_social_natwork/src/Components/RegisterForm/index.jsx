@@ -1,4 +1,6 @@
 import { Form, Input, Button, Checkbox } from 'antd';
+import Cookies from 'js-cookie'
+
 const layout = {
   labelCol: {
     span: 8,
@@ -32,7 +34,8 @@ const RegisterForm = () => {
       body: JSON.stringify(data)
     })
     .then(response => response.json())
-    .then (response => console.log(response.jwt));
+    .then (response => Cookies.set('tokenRegister', response.jwt));
+
   };
 
   const onFinishFailed = (errorInfo) => {

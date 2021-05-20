@@ -1,7 +1,8 @@
-import { REGISTER } from './pastasTypes';
+import { REGISTER } from './registerTypes';
+import Cookies from 'js-cookie'
 
 const initialState = {
-  token: ""
+  token: false
 };
 
 const register = (state = initialState, action) => {
@@ -9,7 +10,7 @@ const register = (state = initialState, action) => {
     case REGISTER:
       return {
         ...state,
-        token: response.jwt
+        token: Cookies.get('tokenRegister')
       };
 
     default:

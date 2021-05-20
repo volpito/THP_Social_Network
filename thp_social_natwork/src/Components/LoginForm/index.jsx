@@ -1,5 +1,6 @@
 import { Form, Input, Button, Checkbox } from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
+import Cookies from 'js-cookie'
 import './style.css';
 
 const Formu = () => {
@@ -19,7 +20,7 @@ const Formu = () => {
       body: JSON.stringify(data)
     })
     .then(response => response.json())
-    .then (response => console.log(response));
+    .then (response => Cookies.set('tokenLogin', response.jwt));
   };
 
   return (
